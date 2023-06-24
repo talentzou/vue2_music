@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4026809 */
+  src: url('iconfont.eot?t=1685969598594'); /* IE9 */
+  src: url('iconfont.eot?t=1685969598594#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('iconfont.woff2?t=1685969598594') format('woff2'),
+       url('iconfont.woff?t=1685969598594') format('woff'),
+       url('iconfont.ttf?t=1685969598594') format('truetype'),
+       url('iconfont.svg?t=1685969598594#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-zanting1:before {
+  content: "\e604";
+}
+
+.icon-xiayishou:before {
+  content: "\e606";
+}
+
+.icon-shangyishou:before {
+  content: "\e607";
+}
+
+.icon-gouwuche:before {
+  content: "\e602";
+}
+
+.icon-yinliang:before {
+  content: "\e63a";
+}
+
+.icon-lishi:before {
+  content: "\e654";
+}
+
+.icon-woxihuan:before {
+  content: "\e601";
+}
+
+.icon-sousuo:before {
+  content: "\e61f";
+}
+
+.icon-xiazai:before {
+  content: "\e64b";
+}
+
+.icon-shipin:before {
+  content: "\e614";
+}
+
+.icon-zanting:before {
+  content: "\e629";
+}
+
+.icon-yinle:before {
+  content: "\e66e";
+}
+
+.icon-shoucang:before {
+  content: "\e619";
+}
+
+.icon-bofang:before {
+  content: "\e62c";
+}
+
+.icon-diantai:before {
+  content: "\e693";
+}
+
+.icon-bendi:before {
+  content: "\e603";
+}
+
+.icon-wangyiyunyinle:before {
+  content: "\e60b";
+}
+
+.icon-yinleguan:before {
+  content: "\e600";
+}
+
