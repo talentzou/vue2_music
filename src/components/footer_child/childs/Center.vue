@@ -14,17 +14,16 @@
      <audio 
      :src="`https://music.163.com/song/media/outer/url?id=33894312.mp3`"
      ref="audio"
-     
-   
-            ></audio>
+     ></audio>
     </div>
   </template>
   
   <script>
 
-import request from '@/utils/request'
+
   export default {
   name:'center_childs',
+  props:['data'],
   data(){
      return{
       playState:false,
@@ -47,22 +46,12 @@ import request from '@/utils/request'
     },
    
   },
-  created(){
-    request({
-        method:'GET',
-        url:"/song/detail",
-        params:{
-          ids:347230
-        }
-      }).then(response=>{
-          const res=response.data.songs[0]
-          console.log('歌曲详情',res)
-          this.songList=res
-          // console.log(this.songList.songs.a1.id)
-          this.$bus.$emit('message',this.songList.id)//总线发送数据
-      },error=>{
-      console.log(error.message)
-    })
+  watch:{
+    data(){
+      console.log('data数据为',this.data)
+      this.songList=this.data
+    }
+   
   },
   mounted() {
 

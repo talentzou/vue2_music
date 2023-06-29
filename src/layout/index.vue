@@ -51,7 +51,7 @@
 .main{
     display: flex;
     background-color: white;
-    height: 606px;
+   
 }
 .asider{
     width: 200px;

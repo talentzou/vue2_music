@@ -6,7 +6,7 @@
   
   <script>
   export default {
-  name:'right_child'
+  name:'songDetail'
   }
   </script>
   

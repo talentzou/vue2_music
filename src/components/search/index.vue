@@ -7,7 +7,8 @@
          > 
          <!-- 歌单列表 -->
          <songItem :msg="searchValues"
-                  v-if=" this.ReturnSearchKey===''"/>
+                    v-if=" this.ReturnSearchKey===''"
+                    @onbind="text"/>
                   <!-- 搜索列表 -->
          <songsResult  :msg="searchValues"
                         ref="childs"/>
@@ -38,6 +39,9 @@
     }
   },
   methods:{
+    text(name){
+        this.searchValues=name   
+     },
      message(){
 
      }

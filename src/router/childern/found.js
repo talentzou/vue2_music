@@ -16,9 +16,9 @@ const found=[{
                     component:()=>import('@/pages/found/personRecommend')       
                 },
                //歌单
-                {   name:'songItem',
-                    path:'songItem',
-                    component:()=>import('@/pages/found/songItem')  
+                {   name:'songList',
+                    path:'songList',
+                    component:()=>import('@/pages/found/songList')  
                 },
                 //歌手
                 {   name:'singerList',

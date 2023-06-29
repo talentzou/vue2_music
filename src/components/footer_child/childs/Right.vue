@@ -1,12 +1,12 @@
 <template>
     <div>
-   <h1>歌单</h1>
+      <h1>333333333333</h1>
     </div>
   </template>
-  
+   
   <script>
   export default {
-  name:'songItem'
+  name:'right_child'
   }
   </script>
   

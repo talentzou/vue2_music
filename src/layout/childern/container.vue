@@ -27,7 +27,7 @@
     return {
         
           recommentItem:['个性推荐','歌单','排行榜','最新音乐','歌手'],
-          routerItem:['personRecommend','songItem','rangSong','newSong','singerList'],
+          routerItem:['personRecommend','songList','rangSong','newSong','singerList'],
           activeIndex:0,
          
     }

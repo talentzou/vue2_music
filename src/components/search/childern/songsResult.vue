@@ -3,7 +3,10 @@
         <p>搜索结果</p>
         <template>
            <ul>
-              <li class="songsSearch" v-for="obj in searchResult" :key="obj.id">
+              <li class="songsSearch" 
+                  v-for="obj in searchResult" :key="obj.id"
+                  @click="returnDAta(obj.id)"
+              >
                     <span>{{obj.name }}</span>
                     <span>---</span>
                     <span>{{ obj.ar[0].name }}</span>
@@ -14,12 +17,14 @@
   </template>
   
   <script>
-  import request from '@/utils/request'
+  //import request from '@/utils/request'
+  import search from '@/api/search'
   export default {
   name:'songsResult',
   props:['msg'],
   data(){
       return{
+        songid:'',
         searchValue:this.msg,
         searchResult:[],//搜索结果
         timer:'',//定时器
@@ -46,31 +51,29 @@
   methods:{
      requestSongs(){
         clearTimeout(this.timer);
-            //请求防抖定时
-   this.timer= setTimeout( ()=>{
-       this.searchValue=this.msg
-       request({
-            method:'GET',
-            url:'/cloudsearch',
-            params:{
-                keywords: this.msg,
-                limit:8
-            }
-        }).then(response=>{
-         console.log('歌单搜索列表结果',response.data)
-     if ( response.data.result !==undefined&& response.data.result !== undefined) 
-        {
-          this.searchResult=response.data.result.songs
-    }
-       else {
-            this.searchResult = []
+            //请求防抖定时                                                 
+   this.timer= setTimeout( async ()=>{
+       this.searchValue=  this.msg
+      try{
+          const res=await search(this.msg)
+        if(res.data.result !==undefined){
+          this.searchResult=res.data.result.songs
         }
-   
-   },
-   error=>{
-    console.log('歌单搜列表错误',error.message)
-   })
+
+      }
+      //捕获异常
+      catch(error){
+        console.log(error)
+      }
+      
+  
      },1500)
+     },
+ 
+     returnDAta(id){
+      console.log('数据id为:',id)
+      this.$store.commit('reflection',id)
+     
      }
   },
 beforeDestroy(){

@@ -5,8 +5,9 @@
       <span>库库音乐</span> 
     </div>
        <div >
-          <i class="el-icon-back shape"></i>
-          <i class="el-icon-right shape"></i>
+        <el-menu></el-menu>
+          <i class="el-icon-back shape" @click="$router.back()"></i>
+          <i class="el-icon-right shape" @click="$router.go()"></i>
        </div>
          <div class="search_box"> 
          <search_view></search_view>

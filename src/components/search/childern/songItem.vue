@@ -6,7 +6,9 @@
             <ul class="songs_item">
                 <li v-for="(obj,index) in hotSearchList" 
                 :key="index"
-                class="border_i">  {{ obj.first }}</li>
+                class="border_i"
+                @click="returnDAta(obj.first)"> 
+                 {{ obj.first }}</li>
             </ul>
         </div>
        
@@ -15,15 +17,18 @@
   </template>
   
   <script>
+ 
 import request from '@/utils/request'
   export default {
   name:'songItemList',
   props:['msg'],
+
   data() {
         return {
          hotSearchList:[],
          serchResult:[],
          searchKey:'',
+         aaid:''
         
          }
 },
@@ -44,13 +49,14 @@ import request from '@/utils/request'
 },
 
 
+
 methods:{
- 
+  returnDAta(name){
+            console.log('传过去关键字为:',name)
+            this.$emit('onbind',name)
+           }
 },
-mounted(){
-   
- 
-}
+
 
   }
   </script>

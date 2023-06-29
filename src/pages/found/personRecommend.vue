@@ -5,20 +5,21 @@
         <span>推荐歌单</span>
        </div>
       <!-- 推荐歌单 -->
-       <recommentView></recommentView> 
+       <recommentView :dataList="personList"></recommentView> 
 </div>   
 </template>
 <script>
   // import {banner} from "@/api/banner"
-  import recommentView from "@/components/main_recmmentlist/index.vue"
+  import recommentView from "@/components/songRecommentlist/index.vue"
   import banner_ from "@/components/banner/index.vue"
+  import { personlized} from '@/api/personlized'
   export default {
   name:'personRecommend',
   components:{recommentView,banner_},
   data() {
     return {
    
-          personlized:[],
+          personList:[],
           Item:['个性推荐','歌单','排行榜','最新音乐','歌手'],
           activeIndex:'',
          
@@ -29,15 +30,14 @@
     select(index){
       this.activeIndex=index
     }
-  //   getapi(){
-  //     axios.get('http://localhost:3000/').then(
-  //       response=>{console.log(response.data)}
-  //       ,error=>{
-  //         console.log(error.message)
-  //       }
-  //     )
-  //   }
-   }
+  
+   },
+   async created(){
+    const res= await personlized({limit:24})
+    this.personList=res.data.result
+    console.log('推荐歌单',res)
+  
+  }
   }
   </script>
   
@@ -49,7 +49,7 @@
  
   #main{
     overflow: auto;
-    height: 600px;
+   
   }
   #main::-webkit-scrollbar{
     width: 10px;
@@ -64,12 +64,7 @@
     align-items: center;
     justify-content: space-around;
   }
-  /* .menu_distance{
-   
-   background-color: #395b7c;
-   line-height: 100px;
-   width:100%;
-  } */
+  
   .el-header {
     margin-top: 20px;
 }

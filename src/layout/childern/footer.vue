@@ -1,20 +1,17 @@
 <template>
     <div class="root">
       <el-footer height="80px">
-        <left_childs></left_childs>
-        <center_childs></center_childs>
-        <right_childs></right_childs>
+        <footerChilds></footerChilds>
       </el-footer>
     </div>
   </template>
   
   <script>
-  import left_childs from "@/components/footer_child/Left"
-  import right_childs from "@/components/footer_child/Right"
-  import center_childs from "@/components/footer_child/Center"
+  import footerChilds from "@/components/footer_child/index"
+ 
   export default {
   name:'footerView',
-  components:{left_childs,right_childs,center_childs}
+  components:{footerChilds}
   }
   </script>
   
