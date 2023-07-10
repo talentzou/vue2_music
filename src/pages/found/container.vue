@@ -5,9 +5,9 @@
         <!-- 各项推荐导航栏 -->
         <tabbarView 
                :recommentItem="recommentItem"
-               @routerKey="routerROate"
+          
                :routerItem="routerItem"
-               :songIndex=" activeIndex">
+                  >
               </tabbarView>
         <!-- 三级路由 -->
         <keep-alive>
@@ -19,6 +19,7 @@
   </template>
   
   <script>
+  //  @routerKey="routerROate"
   import tabbarView from "@/components/tabbar/index.vue"
   export default {
   name:'containView',
@@ -28,21 +29,21 @@
         
           recommentItem:['个性推荐','歌单','排行榜','最新音乐','歌手'],
           routerItem:['personRecommend','songList','rangSong','newSong','singerList'],
-          activeIndex:0,
+         
          
     }
   },
  
    methods:{
-   routerROate(index){
+  //  routerROate(index){
    
-    //判断路由是否是同一个
-    if(this.routerItem[this.activeIndex]!==this.routerItem[index])
-           { 
-            this.$router.push(this.routerItem[index])
-          }
-          this.activeIndex=index
-     }
+  //   //判断路由是否是同一个
+  //   if(this.routerItem[this.activeIndex]!==this.routerItem[index])
+  //          { 
+  //           this.$router.push(this.routerItem[index])
+  //         }
+  //         this.activeIndex=index
+  //    }
      
       
      

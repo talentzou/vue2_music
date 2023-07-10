@@ -17,7 +17,7 @@
   data(){
      return{
         data:[],
-        aaid: ''
+        aaid:this.$store.state.playAudio.songId
      }
   },
   created(){
@@ -25,15 +25,17 @@
   },
   computed:{
     dataone(){
-        return this.$store.state.songid
+        return this.$store.state.playAudio.songId
     }
   },
   watch:{
-    dataone(){
-        console.log('state数据',this.$store.state.songid)
-        this.aaid=this.$store.state.songid
+ '$store.state.playAudio':{
+  
+  handler(newvalue,){
+        console.log('state数据',newvalue)
+        this.aaid=newvalue.songId
         console.log('aaid数据',this.aaid)
-        request({
+            request({
         method:'GET',
         url:"/song/detail",
         params:{
@@ -41,16 +43,35 @@
         ids:this.aaid
         }
       }).then(response=>{
-          const res=response.data.songs[0]
+          const res=response.data.songs
           console.log('歌曲详情wei',res)
           this.data=res
-       
-          
       },error=>{
       console.log(error.message)
     })
+       
+  },
+  deep:true,
+  immediate:true,
+ }
+       
+    //     request({
+    //     method:'GET',
+    //     url:"/song/detail",
+    //     params:{
+    //     //   ids:347230
+    //     ids:this.aaid
+    //     }
+    //   }).then(response=>{
+    //       const res=response.data.songs[0]
+    //       console.log('歌曲详情wei',res)
+    //       this.data=res
+       
+          
+    //   },error=>{
+    //   console.log(error.message)
+    // })
     }
-  }
   
   
   }

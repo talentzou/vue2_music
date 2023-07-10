@@ -17,8 +17,6 @@
       <!-- 标签导航区 -->
      <tags @tag="tagChange" :tags="tags" class="tag_area"/>
     </div>
-    <!-- 标签导航区 -->
-     <!-- <tags @tag="tagChange" :tags="tags" class="distance"/> -->
      <!-- 展示区 -->
     <recommentView :dataList="value" class="dis"></recommentView>
     <!-- 分页 -->
@@ -50,7 +48,7 @@
     }
   },
  ////////////////////////
- async created(){
+  created(){
   this.playlist(this.queryInfo)
     
   },
@@ -73,6 +71,7 @@ methods:{
   queryInfoChange(obj){
     this.playlist(obj)
   },
+  // 标签更改
   tagChange(val){
     this.queryInfo.tag=val
     console.log('tag更改為:',this.queryInfo.tag)

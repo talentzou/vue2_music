@@ -1,0 +1,11 @@
+<div class='container'>
+    <!-- 歌单简介 -->
+    <Detail :songDetail="dataSongList" :dynamicSong="dynamic"></Detail>
+    <div >
+      <span class="title">歌曲列表</span>
+      <span class="count">{{ count }}首歌</span>
+      <span class="playCount">播放：{{ playCount }}次</span>
+    </div>
+    <!-- 表格数据 -->
+    <tableData :tableData="datas"></tableData>
+    </div>

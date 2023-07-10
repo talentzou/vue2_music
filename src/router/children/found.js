@@ -1,14 +1,13 @@
 const found=[{ 
 
-        // path: '/layout',
         path:'',
-
         component:()=>import('@/layout/index'),
         //发现音乐
         children:[
            {
              path:'Found',
-             component:()=>import('@/layout/childern/container'),
+            //  component:()=>import('@/layout/childern/container'),
+            component:()=>import('@/pages/found/container'),
              children:[
                 //个性推荐
                 {   name:'personRecommend',

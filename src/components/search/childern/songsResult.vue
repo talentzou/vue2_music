@@ -72,7 +72,7 @@
  
      returnDAta(id){
       console.log('数据id为:',id)
-      this.$store.commit('reflection',id)
+      this.$store.commit('playAudio/reflection',id)
      
      }
   },

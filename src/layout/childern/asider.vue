@@ -9,14 +9,23 @@
                 <i class="iconfont icon-yinle"></i>                
                <span >发现音乐</span>
               </el-menu-item>
-              <el-menu-item index="/myCollect">
+              <el-menu-item index="/video/officialRecommend">
                 <i class="iconfont icon-shipin"></i>
-                <span >视频</span>
+                <span >MV</span>
               </el-menu-item>
-              <el-menu-item index="/video">
+            
+  
+              <el-menu-item index="/myCollect">
+                
                 <i class="iconfont icon-shoucang"></i>
                 <span >我的音乐收藏</span>
               </el-menu-item>
+              <!-- <el-menu-item index="/mvDetail">
+                
+                <i class="iconfont icon-shoucang"></i>
+                <span >mv详情</span>
+              </el-menu-item> -->
+              
             </el-menu>
       </el-aside>
     </el-container>

@@ -8,7 +8,7 @@
         <div class="origin">
           <img :src="obj.picUrl||obj.coverImgUrl" alt="" width="160px" class="variable" /> 
           <playCount :dataCount="obj.playCount" class="location"/>
-          <i class="el-icon-video-play"></i>
+          <i class="el-icon-video-play" @click="detail(obj.id)"></i>
         </div>
         <!-- <span>{{ obj.name }}</span> -->
         <p>{{ obj.name }}</p>
@@ -41,6 +41,17 @@
         list:[]
     }
   },
+  methods:{
+    detail(ids){
+      console.log('999999999999999',ids)
+      this.$router.push({
+        name:'songDetail',
+        query:{
+           id:ids
+        }
+      })
+    }
+  }
   
   }
 
@@ -60,6 +71,9 @@
 }
 .origin{
   position: relative;
+  img{
+    border-radius:8px ;
+  }
     .img:hover{
       width: 120%;
     }

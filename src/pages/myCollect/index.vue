@@ -1,12 +1,20 @@
 <template>
     <div>
-        <h1>我的搜藏是啥</h1>
+        <h3>我的收藏只有我能看</h3>
+   
     </div>
-  </template>
+  </template >
   
   <script>
+  //import tabbarView from "@/components/tabbar/index.vue"
   export default {
-  name:'myCollect'
+  name:'myCollectView',
+  // components:{tabbarView},
+  data() {
+    return {
+        
+    }
+  },
   }
   </script>
   

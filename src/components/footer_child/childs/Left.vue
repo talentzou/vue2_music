@@ -3,8 +3,8 @@
 
       <div class="picture">
         <img :src="img&&img.al&&img.al.picUrl" alt="照片为空">
-         <span   class="songname">{{ img.name?img.name:songname}}</span>
-         <span  class="singername" >{{img&&img.ar&& img.ar[0].name?img.ar[0].name: singername}}</span>
+         <span   class="songname">{{ img.name?img.name:songName}}</span>
+         <span  class="singername">{{img&&img.ar&& img.ar[0].name?img.ar[0].name: singerName}}</span>
       </div>
        
     
@@ -21,8 +21,8 @@
     return {
       id:'',
       img:[],
-      singername:"暂无数据",
-      songname:"暂无数据",
+      singerName:"暂无数据",
+      songName:"暂无数据",
     
     }
   },
@@ -34,8 +34,13 @@
 
   watch:{
     data(){
-      console.log('data数据为',this.data)
-      this.img=this.data
+      console.log('传过来data数据为',this.data)
+      if(this.data&&this.data[0]&&this.data[0].ar[0]!==null)
+      {
+        this.img=this.data[0]
+        this.singerName=this.data[0].name
+        this.songName=this.data[0].ar[0].name
+      }
     },
     
    

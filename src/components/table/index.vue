@@ -3,39 +3,46 @@
         <div>
             
        <el-table
-    :data="tableData"
+    :data="dataSong"
     stripe
     style="width: 100%"
-    type="index"
-      :index="indexMethod">
-    <el-table-column
-      prop="date"
-      label="歌名"
-      width="300"
-      header-align="center"
+    :key="itemKey"
     >
-      <template slot-scope="scope">
-         <img :src="scope.row.img" width="40" height="40" class="head_pic"/>
-      </template>
-    </el-table-column>
+    <!-- 排序 -->
     <el-table-column
-      prop="name"
-      label="歌手"
-      width="300"
-      header-align="center">
+      type="index"
+      label="#"
+      width="100"
+      align="center"
+      :index="indexMethod">
     </el-table-column>
+    <!-- 播放按钮 -->
     <el-table-column
-      prop="address"
+      label="播放"
+      width="100"
+      align="center">
+      <i class=" el-icon-video-play"></i> 
+    </el-table-column>
+    
+    
+    <el-table-column
+      prop="album"
       label="专辑"
-      width="300"
-      header-align="center">
+      width="200"
+      align="center">
     </el-table-column>
     <el-table-column
-      prop="address"
-      label="时长"
-      width="300"
-      header-align="center">
+      prop="artists"
+      label="歌手"
+      width="200"
+      align="center">
     </el-table-column>
+    <el-table-column
+      prop="times"
+      label="发布时间"
+      width="300"
+      align="center">
+    </el-table-column> 
   </el-table>
   
      </div>
@@ -44,16 +51,32 @@
 <script>
 export default{
     name:'table_',
+    props:{
+    tableData:{
+      type:Array
+    }
+    },
     data() {
         return {
-            count:0
+           dataSong:[],
+           itemKey:1111
         }
     },
     methods:{
         //自定义索引号
         indexMethod(index){
-           return index++
-        }
+           return index+1
+        },
+
+    },
+    watch:{
+      tableData(){
+        this.dataSong = []
+        // this.datasong=''
+        console.log('数据更新了:')
+        this.itemKey=Math.random()
+        this.dataSong=this.tableData
+      }
     }
 }
 </script>
@@ -61,4 +84,8 @@ export default{
 el-table{
     padding: 20px;
 }
+.el-icon-video-play{
+ font-size: 25px;
+}
+
 </style>

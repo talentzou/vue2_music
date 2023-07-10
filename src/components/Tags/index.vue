@@ -28,7 +28,7 @@
   methods:{
    changeTag(val,index){
     this.tagIndex=index
-    this.$emit('tag',val)
+    this.$emit('tag',index)
    }
   }
   }

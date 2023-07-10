@@ -13,7 +13,7 @@
                            <asiderView class="asiderAA"></asiderView>
                     </div>
                     <div class="writerMain">
-                      <!-- 路由切换页面 -->
+                      <!-- 路由切换页面 -->    <!-- 二级路由 -->
                   <keep-alive>
                     <router-view></router-view>
                   </keep-alive>
@@ -21,7 +21,6 @@
                     </div>
             </div>
                <div class="footer">
-              <!-- 二级路由 -->
                  <footerView></footerView>
               </div> 
           </div>
@@ -51,6 +50,7 @@
 .main{
     display: flex;
     background-color: white;
+    height:600px ;
    
 }
 .asider{
@@ -61,7 +61,7 @@
 }
 .writerMain{
     flex: 1;
-    background-color: rgb(240, 246, 246);
+    background-color: white;
     overflow: auto;
      
 }
