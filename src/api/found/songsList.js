@@ -1,5 +1,6 @@
 import request from '@/utils/request'
-const songslist=((queryInfo)=>request({
+//歌单 ( 网友精选碟 )
+export const choiceness=((queryInfo)=>request({
        method:'GET',
        url:'/top/playlist',
        params:{
@@ -10,6 +11,10 @@ const songslist=((queryInfo)=>request({
        }
     
 })
-   
 )
-export default songslist
+//全球歌单榜单
+export const globalList=(()=>request({
+    url:'/toplist',
+   
+}))
+

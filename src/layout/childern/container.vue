@@ -7,7 +7,7 @@
               </tabbarView>
         <!-- 三级路由 -->
         <keep-alive>
-          <router-view class="display"></router-view>
+          <router-view></router-view>
         </keep-alive>
     </div>
   </template>
@@ -36,6 +36,7 @@
     flex-direction: column;
     overflow: hidden;
     height: 100%;
+    padding: 0 10px;
   }
   #main::-webkit-scrollbar{
     width: 10px;

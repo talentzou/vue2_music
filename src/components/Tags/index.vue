@@ -1,52 +1,51 @@
 <template>
-    <div class="area">
-        <div >
-            <span v-for="(obj,index) in tags" :key="index"
-               :class="{tag:  tagIndex===index}"
-               @click="changeTag(obj,index)"
-               >{{ obj }}</span>
-        </div>
-       
+  <div class="viewport">
+    <div>
+      <span v-for="(obj, index) in tags" :key="index" :class="{ tag: tagIndex === index }"
+        @click="changeTag(obj, index)"
+        class="tag-name">{{
+          obj }}</span>
     </div>
-  </template>
+
+  </div>
+</template>
    
-  <script>
- 
-  export default {
-  name:'tags_',
-  props:{
-   tags:{
-    type:Array
-   }
+<script>
+
+export default {
+  name: 'tags_',
+  props: {
+    tags: {
+      type: Array
+    }
   },
   data() {
     return {
-       
-        tagIndex:0,
+
+      tagIndex: 0,
     }
   },
-  methods:{
-   changeTag(val,index){
-    this.tagIndex=index
-    this.$emit('tag',index)
-   }
-  }
-  }
-  </script>
-  
-  <style lang="scss" scoped>
-  .area{
-    margin-top: 10px;
-    margin-left: 20px;
-  }
-    .tag{
-    
-    color: red;
-    
-   }
-
-   span{
-      margin-right: 20px;
+  methods: {
+    changeTag(val, index) {
+      this.tagIndex = index
+      this.$emit('tag', index)
     }
+  }
+}
+</script>
   
-  </style>
+<style lang="scss" scoped>
+.viewport {
+  margin-top: 10px;
+}
+.tag {
+  color: red;
+}
+
+span {
+  margin-right: 20px;
+}
+.tag-name{
+ font-size: 50px;
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="viewport">
        <!-- 标签导航区 -->
      <tags @tag="tagChange" :tags="tags"/>
      <!-- 展示区 -->
@@ -7,7 +7,7 @@
     </div>
 </template>
 <script>
-import { topMv} from '@/api/recommendMv'
+import { topMv} from '@/api/mv/recommendMv'
 import rangMv from '@/components/mvItem/index.vue'
 import tags from '@/components/Tags/index.vue'
 export default {
@@ -34,7 +34,7 @@ export default {
         this.rangList=res.data.data
         console.log('数据改变来了',this.rangList)
     },
-    // 页数改变
+    // 下一页数改变
     nextPage(){
        this.dataSong()
        this.info.offset+=30
@@ -48,14 +48,19 @@ export default {
         if(this.info.area==='全部'){ this.info.area=''}
         this.dataSong()
     },
+    //返回上一页
     previousPages(){
-   if( this.info.offset>0){
-       this.info.offset-=30
-       this.dataSong()
-}
+        if( this.info.offset>0){
+            this.info.offset-=30
+            this.dataSong()
+       }
 }
  }
 }
 </script>
-<style>
+<style scoped lang="scss">
+.viewport {
+    flex: 1;
+    overflow: auto;
+}
 </style>

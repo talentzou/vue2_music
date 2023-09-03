@@ -1,78 +1,52 @@
 <template>
-    <div>
-        <el-header class="tabbar" >
-           <div 
-                v-for="(obj,index) in recommentItem" 
-                :key='index'
-                @click="select(index)"
-                :class="{ item: listIndex === index }"><!--是应用在每个 元素上的绑定表达式，它的作用是判断当前选项是否为活动选项（即选中状态），如果是则添加 .item 类，否则不添加。 -->
-                <span>{{ obj }}</span>
-           </div>
-        </el-header>
+    <!-- 歌手导航栏 -->
+    <div class="horizon">
+       <span>{{ title }}:</span>
+       <div v-for="(obj,index) in list" :key="index" class="navText" >
+        <span :class="{item:indexActive===index}" class="text-title"
+              @click="change(index)">{{ obj }}</span>
+       </div>
     </div>
   </template>
-  
+   
   <script>
   export default {
-  name:'tabbarView',//个人推荐导航栏
+    // 歌手导航栏
+  name:'navbar_',
   props:{
-    recommentItem:{
+     title:{
+        type:String
+     },
+     list:{
         type:Array
-    },
-    routerItem:{
-      type:Array
-    }
+     }
   },
   data() {
     return {
-   
-         
-          routerList:this.routerItem,
-          listIndex:0,//控制导航文字
-          listIndexTwo:0//控制路由跳转是否相同
-         
+        indexActive:0,
     }
   },
- 
-   methods:{
-    select(index){
-       this.listIndex=index
-      //  this.$emit('routerKey',index)
-      this.routerRoate(index)
-    },
-    routerRoate(index){
-    
-      //  console.log('router index:',this.routerList[this.listIndexTwo])
-      //  console.log('router :',this.routerList[index])
-   //判断路由是否是同一个
-       if(this.routerList[this.listIndexTwo]!==this.routerList[index])
-          { 
-            console.log('进去index:')
-            this.listIndexTwo=index
-            this.$router.push(this.routerList[index]
-            )
-         }
+  methods:{
+    change(index){
+        this.indexActive=index;
+        this.$emit('changeIndex',index)
+        console.log('事件被处发了')
     }
-    
-     },
   }
+}
   </script>
   
-  <style scoped>
-   .tabbar{
+  <style lang="scss" scoped>
+   .horizon{
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
-  .el-header {
-    margin-top: 20px;
-}
-/* 点击样式 */
-.item {
-    padding: 2px;
-    font-size: 20px;
-    color: rgb(228, 78, 37);
-    padding: 3px;
-    border-bottom: 2px solid skyblue
-}
+    margin: 15px 0;
+   }
+   .navText{
+    margin-left: 15px;
+    font-size: 50px;
+    .item{
+        color: rgb(227, 42, 42);
+    }
+   }
+
   </style>

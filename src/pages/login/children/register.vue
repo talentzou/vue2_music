@@ -32,7 +32,7 @@
   </template>
   
   <script>
-  import{register,captchaSent, captchaStatus} from '@/api/login'
+  import{register,captchaSent, captchaStatus} from '@/api/login/login'
   import loginDataFormRules from '@/mixin/registerRules'
   export default {
   name:'register_',
@@ -42,13 +42,9 @@
         info:{
             nickname:'',
             userPhone:'',
-            // passwordNew:'',
             password:'',
             captcha:'',
         },
-       
-   
-      
      }
   },
   methods:{
@@ -58,9 +54,7 @@
           console.log('注册验证码发送',res)
           if(res.status===200)
           {
-                  this.$message('success','发送验证码成功')
-                  // const res=await captchaStatus(this.info)
-                  // console.log('验证码验证',res)
+             this.$message('success','发送验证码成功')
                 }
           else{this.$message('error','发送验证码失败')}
     },
@@ -74,7 +68,6 @@
                    const cap=await captchaStatus(this.info)
                    console.log('验证码验证',cap)
                    if(cap.status!==200){return this.$message('error','验证码错误')}
-                
                    const res=await register(this.info)
                    console.log('校验通过',res)
                    this.$route.push('/login/enter')
@@ -84,15 +77,7 @@
                 }
                 
             })
-       
     },
-
-    //提交表单
-    
-    //邮箱注册
-    emailRegister(){
-
-    }
   }
   
   }

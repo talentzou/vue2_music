@@ -1,5 +1,5 @@
 <template>
-   <div class='container'>
+   <div class='viewport'>
     <!-- 歌单简介 -->
     <Detail :songDetail="dataSongList" :dynamicSong="dynamic"></Detail>
     <div >
@@ -13,20 +13,21 @@
   </template>
   
   <script>
-  import {songListDetail,dynamicList, trackAll,detailMessage} from '@/api/songDetail'
+  import {songListDetail,dynamicList, trackAll,detailMessage} from '@/api/detail/songDetail'
   import Detail from '@/components/songListDetail/introduce.vue';
-  import tableData from '@/components/songListDetail/tableData';
+  import tableData from '@/components/table/tableData';////
   export default {
   name:'songDetail',
  components:{Detail, tableData},
+ //
   data() {
     return {
       dataSongList:{},//歌單詳情
       dynamic:{},//歌单详情动态
       songLists:[],//歌单歌曲列表
       datas:[],//获取歌曲信息
+      musicId:[],
       count:0,
-      // id:this.$route.params.id
       id:'',
       ids:''
       
@@ -40,34 +41,7 @@
      this.songListAll()
      }
   },
-  // methods:{
-  //  async songListMessage(){
-  //   //   <!-- 歌单简介 -->
-  //       const res=await songListDetail()
-  //       console.log('数据来了1111',res)
-  //       this.dataSongList=res.data.playlist
-  //       console.log('数据改变来了1111',this.dataSongList)
-  //   },
-  //    // //歌单动态信息
-  //    async songDynamicList(){
-  //      const res2=await dynamicList()
-  //       console.log('数据来了22222',res2)
-  //       this.dynamic=res2.data
-  //       console.log('数据改变来了22222',this.dynamic)
-  //    },
-  //    //歌单所有歌曲
-  //      async  songListAll(){
-  //       const res3=await  trackAll()
-  //       console.log('数据来了33333',res3)
-  //       this.songLists=res3.data.songs
-  //       console.log('数据gaibian来了33333',this.songLists)
-  //       this.songLists.forEach((value)=>{
-  //         this.count+=1
-  //           this.datas.push(new detailMessage(value))
-  //       })
-
-  //      },
-  // },
+  
   methods:{
    async songListMessage(){
     //   <!-- 歌单简介 -->
@@ -86,13 +60,19 @@
      },
      //歌单所有歌曲
        async  songListAll(){
-        const res3=await  trackAll(this.id)
-        console.log('数据来了33333',res3)
-        this.songLists=res3.data.songs
-        console.log('数据gaibian来了33333',this.songLists)
-        this.songLists.forEach((value)=>{
-          this.count+=1
-            this.datas.push(new detailMessage(value))
+          const res3=await  trackAll(this.id)
+          console.log('数据来了33333',res3)
+          this.songLists=res3.data.songs
+          console.log('歌曲数目',this.songLists)
+          this.songLists.forEach((value)=>{
+          this.count+=1;
+          this.datas.push(new detailMessage(value))
+          this.datas.forEach((value)=>{
+            // console.log('hshshshsh',value.songId)
+            this.musicId.push(value.songId)
+          })
+          this.$store.commit('playAudio/songsListId',this.musicId)
+          this.musicId=[]
         })
   },
   dataID(){
@@ -103,9 +83,6 @@
         this.id=this.ids
       }
     }
-    // if(this.$route.params.id!==null){
-    //   this.id=this.$route.params.id
-    // }
    
   },
   
@@ -127,6 +104,8 @@
         this.dataID();
         this.songListMessage();
         this.songDynamicList();
+        this.datas=[];
+        this.count=0
         this.songListAll();
       }
         
@@ -140,8 +119,12 @@
   </script>
   
   <style scoped>
-  .container{
+  .viewport{
     background: rgb(rgb(241, 239, 239), green, blue);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 10px;
   }
   .playCount{
    

@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="viewport">
     <!-- 左边边 -->
     <leftVideo class="left_video" 
     :dataDetail="mvDetail" 
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import {Detail,detailInfo,simiMv,mvUrl} from '@/api/mvDetail'
-import { mvComment } from '@/api/comment'
+import {Detail,detailInfo,simiMv,mvUrl} from '@/api/detail/mvDetail'
+import { mvComment } from '@/api/comment/comment'
 import rightVideo from '@/components/mvDetail/rightVideo.vue'
 import leftVideo from '@/components/mvDetail/leftVideo.vue'
 export default {
@@ -34,19 +34,12 @@ data() {
        
     }
 },
-// created(){
-//    this.id=this.$route.query.id
-//    this.mvDetailData();
-//    this.mvDetailInfo();
-//    this.simiMvDetail();
-//    this.mvAddress()
-// },
+
 methods:{
     //mv详情
-   
    async mvDetailData(){
-    if(this.id!==undefined){
-     const res=await Detail(this.id);
+       if(this.id!==undefined){
+       const res=await Detail(this.id);
        console.log('mvmv',res);
        this.mvDetail=res.data.data;
        console.log('数据来了',this.mvDetail);
@@ -54,9 +47,9 @@ methods:{
     },
     //获取 mv 点赞转发评论数数据
     async mvDetailInfo(){
-        const res=await detailInfo(this.id);
-       console.log('mvmvinfo',res);
-       this.mvInfo=res.data
+          const res=await detailInfo(this.id);
+          console.log('mvmvinfo',res);
+          this.mvInfo=res.data
     },
     //相似mv
    async simiMvDetail(){
@@ -81,16 +74,17 @@ methods:{
         this.total=res.data.total
     }
 },
+//监听mv id改变,使页面刷新
 watch:{
     '$route.query.id'(){
         if(this.$route.query.id!==null)
        {
-        this.id=this.$route.query.id;
-       this.mvDetailData();
-       this.mvDetailInfo();
-       this.simiMvDetail();
-       this.mvAddress();
-       this.mvCommentData();
+         this.id=this.$route.query.id;
+         this.mvDetailData();
+         this.mvDetailInfo();
+         this.simiMvDetail();
+         this.mvAddress();
+         this.mvCommentData();
        }
     }
 }
@@ -98,9 +92,10 @@ watch:{
 </script>
 
 <style scoped lang="scss">
-.content{
+.viewport{
     display: flex;
     overflow: auto;
+    flex: 1;
     .left_video{
         width: 65%;
     }

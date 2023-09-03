@@ -1,30 +1,23 @@
 <template>
-    <div class="rooter">
+    <div class="viewport">
         <span class="title" v-if="state">热门推荐</span>
     <div  class="recommend" v-if="state" >
-        <div v-for="obj in songList" :key="obj.id" class="margin">
+        <div v-for="obj in songList" :key="obj.id" class="mv">
             <img :src="obj.picUrl" alt="" >
             <div class="location" >
                 <span>{{ obj.name }}</span>
                  <span>{{ obj.artistName }}</span>
             </div>
-           
         </div>
-        
     </div>
      <div>
-       
-         <span>官方出品</span>
+         <span class="title">官方出品</span>
         <mvOfficial :dataSong="recommendSongList" @changePage="nextPage" @previousPages="previousPages"></mvOfficial>
      </div> 
-     <!-- <div class="size">
-        <span><i class="el-icon-back" @click="this.$router.back()"></i>上一页</span>
-        <span> 下一页 <i class="el-icon-right" @click="nextPage"></i></span>
-        </div> -->
     </div>
 </template>
 <script>
-import { personalizedOne ,exclusive} from '@/api/recommendMv'
+import { personalizedOne ,exclusive} from '@/api/mv/recommendMv'
 import mvOfficial from '@/components/mvItem/index.vue'
 export default {
  name:'officialRecommend',   
@@ -38,30 +31,39 @@ export default {
     }
  },
  created(){
-     this.dataList()
+     this.dataList();
+     this.recommend();
  },
  methods:{
-   async dataList(val){
-         const res=await  personalizedOne()
-         console.log('数据来了11',res)
-         this.songList=res.data.result
-         console.log('数据2222来了',this.songList)
-         const res2=await exclusive(val)
-         console.log('数据来了eee',res2)
-         this.recommendSongList=res2.data.data
+   async dataList(){
+         const res=await  personalizedOne();
+        //  console.log('数据来了11',res);
+         this.songList=res.data.result;
+         console.log('数据2222来了',this.songList);
        },
+    //  官方推荐
+         async recommend(val){
+            const res2=await exclusive(val);
+            console.log('数据来了eee',res2);
+            this.recommendSongList=res2.data.data;
+         },
+       //点击下一页
        nextPage(){
-          this.offset+=30
-          this.dataList(this.offset)
-        //   this.state=!this.state
-          if( this.offset>0)  this.state=false
+          this.offset+=30;
+        //   this.dataList(this.offset);
+          this.recommend(this.offset);
+          if( this.offset>0)  this.state=false;
        },
+       //返回上一页
        previousPages(){
         if( this.offset>0){
-            this.offset-=30
-            this.dataList(this.offset)
-            // this.state=!this.state
-            if( this.offset===0)  this.state=!this.state
+            this.offset-=30;
+            this.dataList(this.offset);
+            this.recommend(this.offset);
+            if( this.offset===0){
+                  this.dataList(this.offset);
+                  this.state=!this.state;
+            }
         }
          
        }
@@ -70,22 +72,27 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.rooter{
+.viewport{
     overflow: auto;
-    height: 500px;
+    flex: 1;
+    padding: 20px;
 }
+.title{
+        display: block;
+        font-size: 80px;
+        font-weight: 700;
+    }
 .recommend{
     display: flex;
-    .title{
-        display: block;
-    }
-    .margin{
+  
+    .mv{
         margin: 10px 25px 10px 0;
     }
     img{
-        width: 250px;
-        height: 150px;
+        width: 800px;
+        height: 500px;
         border-radius:15px ;
+        object-fit: contain;
     }
     .location{
        display: flex;
@@ -93,20 +100,5 @@ export default {
        
     }
 }
-// .size{
-//     font-size: 20px;
-//     display: flex;
-//     justify-content: center;
-//     span{
-//         margin-right: 100px;
-//     }
-//     i{  
-//         font-size: 30px;
-//         border: 1px solid  black;
-//         border-radius:50%;
-//         color: white;
-//         background: rgb(230, 96, 96);
-       
-//     }
-// }
+
 </style>

@@ -1,8 +1,8 @@
 <template>
-    <div v-if="this.searchResult.length>0">
+    <div v-if="this.searchResult.length>0" class="viewport">
         <p>搜索结果</p>
         <template>
-           <ul>
+           <ul class="flex">
               <li class="songsSearch" 
                   v-for="obj in searchResult" :key="obj.id"
                   @click="returnDAta(obj.id)"
@@ -18,7 +18,7 @@
   
   <script>
   //import request from '@/utils/request'
-  import search from '@/api/search'
+  import search from '@/api/search/search'
   export default {
   name:'songsResult',
   props:['msg'],
@@ -84,6 +84,15 @@ beforeDestroy(){
   </script>
   
   <style scoped>
+  .viewport {
+    width: 600px;
+  }
+  .flex {
+    display: flex;
+    width: 600px;
+    flex-wrap: wrap;
+
+  }
   .songsSearch{
     margin: 15px 25px;
   }

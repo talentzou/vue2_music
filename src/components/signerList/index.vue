@@ -28,14 +28,12 @@
   .horizon{
     display: flex;
     flex-wrap: wrap;
-    /* overflow: auto;
-    height: 500px; */
   }
   .distance{
     margin: 20px 25px;
   }
    .img{
-    width: 150px;
-    height: 150px;
+    width: 300px;
+    height: 300px;
    }
   </style>

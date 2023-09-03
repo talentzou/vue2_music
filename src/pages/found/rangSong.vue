@@ -1,27 +1,18 @@
 <template>
     <div class="container">
-     <!-- <div v-for="obj in list1" :key="obj.id">
-      <img :src="`${obj&&obj.coverImgUrl}`" alt="" class="authorityList">
-     </div> -->
-     <!-- <div class="horizontalLine">
-      <div v-for="obj in list2" :key="obj.id" class="horizontalLine">
-      <img :src="`${obj&&obj.coverImgUrl}`" alt="" class="globalList">
-      <span>{{  }}</span>
-     </div>
-     </div> -->
-     <span> 官方榜单</span>
+     <span>官方榜单</span>
       <!-- 官方榜单展示区 -->
     <recommentView :dataList="list1"></recommentView>
       <!-- 全球榜单展示区 -->
-      <span> 全球榜单</span>
+      <span>全球榜单</span>
     <recommentView :dataList="list2"></recommentView>
     </div>
   </template>
   
   <script>
   import recommentView from "@/components/songRecommentlist/index.vue"
-  import request from '@/api/toplist'
-  // import _ from 'lodash'
+ 
+  import{globalList} from '@/api/found/songsList'
   export default {
   name:'rangSong',
   components:{recommentView},
@@ -37,7 +28,7 @@
   },
   methods:{
       async rangData(){
-          const res=await request()
+          const res=await globalList()
           console.log('排行旁數據:',res)
           this.rangList=res.data.list
           console.log('ranglist数据类型为:',typeof this.rangList)
@@ -47,17 +38,15 @@
           // 截取后面数据
           this.list2=this.rangList.slice(4)
           console.log('list222数为:', this.list2)
-         
         }
   }
   }
-  ///
   </script>
   
   <style lang="scss" scoped>
   .container{
   overflow: auto;
-  height: 500px;
+  flex: 1;
   margin:20px 15px;
   span{
     font-size: 30px;

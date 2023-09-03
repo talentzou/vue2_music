@@ -1,76 +1,66 @@
 <template>
-    <div id="rootLayout">
-    
-          <div class="main_container">
+    <div id="rootLayout">   
+           
               <div class="header">
-                  <!-- 头部 -->
+            
                   <headerView ></headerView>
                </div>
-               <!-- 中间部分 -->
-           <div class="main">
-                    <div class="asider">
-                           <!-- 侧部导航栏 -->
-                           <asiderView class="asiderAA"></asiderView>
-                    </div>
-                    <div class="writerMain">
-                      <!-- 路由切换页面 -->    <!-- 二级路由 -->
+             
+           <div class="container">
+          
+              <asideView class="aside"></asideView>  
                   <keep-alive>
-                    <router-view></router-view>
-                  </keep-alive>
-                     
-                    </div>
-            </div>
-               <div class="footer">
-                 <footerView></footerView>
-              </div> 
-          </div>
+                    <router-view ></router-view>
+                  </keep-alive>                    
+         
+           
+            </div>    
+            
+            <footerView class="footer"></footerView>
     </div>
   </template>
   
   <script>
-  import asiderView from '@/layout/childern/asider.vue'
-   import headerView  from '@/layout/childern/header.vue'
-   import footerView from '@/layout/childern/footer.vue'
-   //import containView from '@/layout/childern/container.vue'
+import asideView from '@/layout/childern/asider.vue'
+import headerView  from '@/layout/childern/header.vue'
+import footerView from '@/layout/childern/footer.vue'
   export default {
   name:'indexMain',
-  components:{ headerView,asiderView,footerView,}
+  components:{ headerView,asideView,footerView}
   }
   </script>
   
-  <style scoped>
+  <style scoped lang="scss">
   #rootLayout{
-    margin: 0 5px;
+    width: 100%;
+    height: 100vh;
     overflow: hidden;
-  }
-.header{
-    height: 65px;
-    width: inherit;
-}
-.main{
     display: flex;
-    background-color: white;
-    height:600px ;
-   
-}
-.asider{
-    width: 200px;
-    background-color: white;
-    height: 100%;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0 10px;
+  }
   
+.header{
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
 }
-.writerMain{
-    flex: 1;
-    background-color: white;
-    overflow: auto;
-     
+.container{
+    display: flex;
+    width: 100%;
+    background-color: rgb(240, 233, 233);
+    height: calc(100% - 300px);  
 }
 
+.aside{
+    width: 400px;
+    background-color: #ffffff;
+}
 .footer{
-    background-color: rgb(171, 129, 65);
-    height: 80px;
-    margin: 0 10px;
-    align-content: center;
+    background-color: rgb(237, 234, 229);
+    height: 200px;
     align-content: center;
 } 
 

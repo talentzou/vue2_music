@@ -3,7 +3,7 @@ import{
     Button, Container,Main,Footer,Aside,Header,Icon,Menu,
     Carousel,CarouselItem,MenuItem,Row,Col,Image,Popover,
     Input,Table,TableColumn,Pagination,Tag ,Dropdown,DropdownMenu,
-    DropdownItem,Link,Form,FormItem,Message,Divider}  from 'element-ui'
+    DropdownItem,Link,Form,FormItem,Message,Divider,slider}  from 'element-ui'
     Vue.use(Button)
     Vue.use(Container)
     Vue.use(Main)
@@ -31,6 +31,7 @@ import{
     Vue.use(Form)
     Vue.use(FormItem)
     Vue.use(Divider)
+    Vue.use(slider)
     Vue.prototype.$message = function(type, msg) {
         Message({
           showClose: true, // 关闭按钮是否显示

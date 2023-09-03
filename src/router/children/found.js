@@ -6,8 +6,8 @@ const found=[{
         children:[
            {
              path:'Found',
-            //  component:()=>import('@/layout/childern/container'),
-            component:()=>import('@/pages/found/container'),
+             component:()=>import('@/layout/childern/container'),
+            // component:()=>import('@/pages/found/container'),
              children:[
                 //个性推荐
                 {   name:'personRecommend',

@@ -1,8 +1,6 @@
 <template>
   <div >
      <div class="space">
-        <!-- <el-input placeholder="请输入内容" v-model="input" clearable></el-input>
-        <el-input placeholder="请输入密码" v-model="input" show-password></el-input> -->
         <el-form ref="form" :model="form" :rules="loginRules">
               <el-form-item  prop="userName" >
                 <el-input placeholder="请输入手机号/邮箱" v-model="form.userName" clearable autofocus="true"></el-input>
@@ -23,7 +21,7 @@
 </template>
 
 <script>
-  import{email} from '@/api/login'
+  import{email} from '@/api/login/login'
  import { loginDataFormRules} from '@/mixin/loginRules'
 export default {
     name:'login_',
@@ -39,6 +37,7 @@ export default {
       }
     },
     methods:{
+        //表单提交验证，并登录，存储token，返回首页
         userLogin(ref){
             this.$refs[ref].validate(async(valid)=>{
                 if(valid){

@@ -1,6 +1,6 @@
 <template>
     <div class="root">
-      <el-footer height="80px">
+      <el-footer class="el-footer">
         <footerChilds></footerChilds>
       </el-footer>
     </div>
@@ -8,7 +8,6 @@
   
   <script>
   import footerChilds from "@/components/footer_child/index"
- 
   export default {
   name:'footerView',
   components:{footerChilds}
@@ -16,12 +15,14 @@
   </script>
   
   <style scoped>
-  
+  .root{
+    background: rgb(233, 236, 237);
+  }
    .el-footer {
-    background-color: #bacbbc;
     display: flex;
     justify-content: space-between;
-    /* align-content: center; */
-    
+  }
+  .el-footer {
+    height: 80px;
   }
   </style>

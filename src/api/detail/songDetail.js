@@ -31,7 +31,13 @@ export function dynamicList(id){
           }
       })
    }
-  
+  //歌曲详情
+  export const songdetail=((id)=>request({
+    url:"/song/detail",
+    params:{
+        ids:id
+    }
+}))
 
    export class detailMessage{
     constructor(result){

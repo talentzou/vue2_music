@@ -1,15 +1,15 @@
 <template>
-  <div>
-    
-      <tabbarView :recommentItem="nav"   :routerItem="routerItem"></tabbarView>
+  <div class="viewport">
+        <!-- 导航栏 -->
+      <tabbarView :recommentItem="nav" :routerItem="routerItem"></tabbarView>
     <keep-alive>
-      <router-view></router-view>
+      <router-view ></router-view>
     </keep-alive>
   
   </div>
 </template>
 <script>
-import tabbarView from "@/components/tabbar/index.vue"
+import tabbarView from "@/components/navbar/index.vue"
 export default{
   name:'videoView',
   components:{tabbarView},
@@ -22,5 +22,10 @@ export default{
 }
 </script>
 <style lang="scss" scoped>
-  
+  .viewport {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 </style>

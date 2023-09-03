@@ -1,7 +1,7 @@
 app.<template>
   <div>
       <div class="textInput">
-        <h1>评论(已有{{ total+'条' }})</h1>
+        <h1>评论区(已有{{ total+'条' }})</h1>
         <el-input
           type="textarea"
           placeholder="请输入内容"
@@ -19,7 +19,7 @@ app.<template>
            <div v-for="(obj,index) in hotComment" :key="index"  class="visiter">
             <img :src="obj.user.avatarUrl" alt="111">
             <div >
-                 <span>{{ obj.user.nickname }}:</span>
+                 <span class="nickname">{{ obj.user.nickname }}:</span>
                  <span>{{ obj.content }}</span>
                  <div class="time">
                     <span>{{ obj.timeStr }}</span>
@@ -36,7 +36,7 @@ app.<template>
            <div v-for="(obj,index) in comment" :key="index"  class="visiter">
             <img :src="obj.user.avatarUrl" alt="111">
             <div >
-                 <span>{{ obj.user.nickname }}:</span>
+                 <span class="nickname">{{ obj.user.nickname }}:</span>
                  <span>{{ obj.content }}</span>
                  <div class="time">
                     <span>{{ obj.timeStr }}</span>
@@ -86,6 +86,11 @@ export default {
   display: flex;
   padding: 10px;
   width: 100%;
+  border-bottom: 1px solid rgba(124, 118, 118,0.4);
+  .nickname{
+      margin-right: 10px;
+      color: skyblue;
+  }
   img{
     width: 50px;
     height: 50px;
@@ -121,7 +126,12 @@ export default {
    .position{
     position: absolute;
     right: 0;
+    color: rgb(140, 137, 134);
+    font-size: 10px;
    }
   }
+}
+h1{
+  margin: 15px 0;
 }
 </style>

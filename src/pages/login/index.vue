@@ -12,7 +12,7 @@
               </div>
                 <div>
                        <!-- 登录/注册界面 -->
-                        <router-view></router-view>
+                      <router-view></router-view>
                 </div>
                
    </div>
@@ -28,6 +28,7 @@ data() {
     }
 },
 methods:{
+    //登录||注册页面转换
     register(){
         this.loginState=!this.loginState
         if(this.loginState){
@@ -36,7 +37,6 @@ methods:{
         else{
             this.$router.push('/login/register')
         }
-        // this.$router.push('/login/register')
     }
 }
 }

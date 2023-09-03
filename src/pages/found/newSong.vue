@@ -2,82 +2,117 @@
     <div class="space">      
       <!-- 标签导航区 -->
      <tags @tag="tagChange" :tags="tags" class="distance"/>
-      <!-- 表格展示 -->
-      <TableView class="padding" :tableData="newSongs"/>
+     <div class="title">
+      <span  @click="titleChange" class="background" id="one">新歌速递</span>
+      <span @click="titleChange"  id="two">新碟上架</span>
+    </div>
+    <!-- 新歌速递 -->
+       <tableData v-show="stateDisplay" :tableData=" newMusicDataList"></tableData>
+      <!-- 新专辑 -->
+        <newAlbum :dataList="newSongsList" v-show="!stateDisplay"></newAlbum>
     </div>
      
   </template>
   
   <script>
-  import request from '@/api/newSongs'
-  import {songMessage} from '@/api/newSongs'
+  import {album, newMusic} from '@/api/found/newSongs'
+  import {newMusicDate} from '@/api/found/newSongs'
   import tags from '@/components/Tags/index.vue'
-  import TableView from '@/components/table/index.vue'
+  import tableData from '@/components/table/tableData';
+  import newAlbum from "@/components/songRecommentlist/index.vue"
   export default {
   name:'newSong',
-  components:{tags,TableView},
+  components:{tags,tableData, newAlbum },
   data() {
     return {
       tags:["全部", "华语","日本" ,"欧美","韩国"],
       language:['All','ZH','JP','EA','KR'],
-
+      type:[0,7,8,96,16],
       title:[],
-      newSongsList:[],
-      newSongs:[],
+      newSongsList:[],//  新专辑提取
+     // newSongs:[],//  新专辑存放数据
+      newMusicList:[], //新歌速递提取
+      newMusicDataList:[],//新歌速递数据存放
+      stateDisplay:true,
       info:{
         area:'全部',
+        type:0
 
       }
     }
   },
   methods: {
+    //歌曲||专辑分类
     tagChange(index) {
-      console.log("tag更改为:", index);
-       this.info.area=this.language[index]
-       console.log('新info数据为:',this.info)
-        console.log('数据TAGS调用:',)
+        console.log("tag更改为:", index);
+        this.info.area=this.language[index]
+        this.info.type=this.type[index]
+        // console.log('新info数据为:',this.info)
+        //  console.log('数据TAGS调用:',)
         this.newSongs=[]
-
-       this.dataNewSongs()
+        this.newMusicDataList=[]
+        this.dataNewSongs()
+        this.newMusicData()
     },
-    // async dataNewSongs(){
-    //   const res=await request(this.info)
-    //   this.newSongsList=res.data.result
-    //   console.log('新歌数据为:',this.newSongsList)
-    //   // 遍历数组内容
-    //   this.newSongsList.forEach((value)=>{
-    //     // console.log('数据北调用:',value)
-    //     this.newSongs.push(new songMessage(value))
-    //   })
-    //  }
+  //  新专辑
     async dataNewSongs(){
-      const res=await request(this.info)
-      this.newSongsList=res.data.monthData.slice(0,50)
-      console.log('新歌数据为:',this.newSongsList)
-      // 遍历数组内容
-      this.newSongsList.forEach((value)=>{
-        // console.log('数据北调用:',value)
-        this.newSongs.push(new songMessage(value))
-      })
+      const res=await album(this.info)
+      this.newSongsList=res.data.monthData.slice(0,24)
+      // console.log('新专辑数据为:',this.newSongsList)
+    
+     },
+     //新歌速递
+     async newMusicData(){
+        const res=await newMusic(this.info)
+        // console.log('新歌数据为:',res)
+        this.newMusicList=res.data.data.slice(0,50)
+        // console.log('新专辑数据为:',this.newMusicList)
+        this.newMusicList.forEach((arr=>{
+        this.newMusicDataList.push(new newMusicDate(arr))
+      }))
+     },
+     //展示数据页面切换
+     titleChange(){
+         this.stateDisplay=!this.stateDisplay
+        //  console.log('fvvcvvccthis',this.stateDisplay)
+         const titleOne=document.getElementById('one')
+         const titleTwo=document.getElementById('two')
+         if(this.stateDisplay){
+            this.newMusicData()
+        }else{
+           this.dataNewSongs()
+      }
+        titleOne.classList.toggle('background')
+        titleTwo.classList.toggle('background')
      }
   },
   created(){
-    this.dataNewSongs(this.info)
+    this.newMusicData()
   }
  
   }
   </script>
   
-  <style scoped>
+  <style scoped lang="scss">
   .space{
     overflow: auto;
-    height: 500px;
+    flex: 1;
   }
    .distance{
     margin-bottom: 25px;
 
    }
-   /* .padding{
-     padding: 20px;
-   } */
+  .title{
+   text-align: center;
+   margin:30px 0;
+   span{
+     border: 1px solid rgba(137, 134, 134 ,0.5);
+     border-radius:10px;
+     margin-left: 20px;
+     color:black;
+   }
+   .background{
+    background: rgb(118, 113, 113);
+   }
+  }
   </style>
