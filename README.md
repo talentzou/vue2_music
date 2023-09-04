@@ -1,5 +1,6 @@
-# music_wangyiyun
 
+# vue2_music
+基于vue2写的网易云音乐播放器
 ## Project setup
 ```
 yarn install
@@ -22,3 +23,5 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
