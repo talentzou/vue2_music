@@ -102,14 +102,6 @@
     margin: 0;
   }
   
-  /* .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #7187b3;
-  } */
- 
   .el-carousel{
     margin: auto 30px;
   }

@@ -4,8 +4,6 @@
         <img :src="obj.picUrl" alt="11111"  class="img">
         <p>{{ obj.name }}</p>
       </div>
-      
-
     </div>
   </template>
    
@@ -33,7 +31,8 @@
     margin: 20px 25px;
   }
    .img{
-    width: 300px;
-    height: 300px;
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
    }
   </style>

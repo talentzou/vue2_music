@@ -83,8 +83,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-    padding: 10px;
-    align-items: center;
-  
+    padding: 5px;
 }
   </style>

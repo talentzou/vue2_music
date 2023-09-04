@@ -59,7 +59,7 @@
     align-items: center;
     span{
       margin:0 20px;
-      font-size: 80px;
+      font-size: 25px;
     }
   }
   .el-header {

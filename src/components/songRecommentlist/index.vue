@@ -65,7 +65,7 @@ export default {
 }
 
 .item {
-  width: 300px;
+  width: 160px;
   margin: 15px 12px;
 }
 
@@ -74,8 +74,8 @@ export default {
 
   .img {
     border-radius: 8px;
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 160px;
   }
 
 }
@@ -99,7 +99,7 @@ export default {
   position: absolute;
   bottom: 60px;
   right: 60px;
-  font-size: 80px;
+  font-size: 30px;
   border-radius: 50%;
 
   &:hover {

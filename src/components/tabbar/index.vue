@@ -43,7 +43,7 @@
    }
    .navText{
     margin-left: 15px;
-    font-size: 50px;
+    font-size: 20px;
     .item{
         color: rgb(227, 42, 42);
     }

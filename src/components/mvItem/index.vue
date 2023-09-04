@@ -98,7 +98,7 @@ export default {
       white-space: nowrap;
       -webkit-box-orient: vertical; //伸缩盒对象子元素排列方式
       overflow: hidden;
-      width: 500px;
+      width: 180px;
     }
 
     .text {
@@ -112,8 +112,8 @@ export default {
     }
 
     img {
-      width: 500px;
-      height: 500px;
+      width: 160px;
+      height: 160px;
       border-radius: 5px;
       object-fit: cover;
 

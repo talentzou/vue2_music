@@ -53,7 +53,6 @@
     color: #7a8ea7;
     font-size: 14px;
     opacity: 0.75;
-    line-height: 200px;
     margin: 0;
   }
   

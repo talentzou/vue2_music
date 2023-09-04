@@ -7,10 +7,7 @@
         <i class="el-icon-video-pause" @click="audioplay" v-show="!buttonState"></i>
         <i class="el-icon-caret-right" @click="next"></i>
       </div>
-      <!-- 播放音乐真正的标签
-      看接口文档: 音乐地址需要带id去获取(但是有的歌曲可能404)
-      https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e8%8e%b7%e5%8f%96%e9%9f%b3%e4%b9%90-url
-     -->
+    
       <div class="process">
         <span>{{ currentTime }}</span>
         <div class="slider">
@@ -18,12 +15,16 @@
         </div>
         <span>{{ totalTime }}</span>
       </div>
+      <!-- 音乐·标签；播放音乐真正的标签
+      看接口文档: 音乐地址需要带id去获取(但是有的歌曲可能404)
+      https://binaryify.github.io/NeteaseCloudMusicApi/#/?id=%e8%8e%b7%e5%8f%96%e9%9f%b3%e4%b9%90-url
+     --> 
       <audio :src="`https://music.163.com/song/media/outer/url?id=${songId}.mp3`" ref="audio" autoplay
         @timeupdate="updateTime"></audio>
     </div>
-
+     <!-- 声音大小控制 -->
     <div class="sound">
-      <span><i class="el-icon-service"></i></span>
+     <i class="el-icon-service"></i>
       <div class="slider">
         <el-slider v-model="soundValue" @change="sound" :max=1 :step=0.1 :show-tooltip="false"></el-slider>
       </div>
@@ -149,12 +150,12 @@ export default {
 }
 
 .container {
-  width: 800px;
+  width: 400px;
   flex-direction: column;
   display: flex;
+
   .paly-btn {
     display: flex;
-    padding-top: 15px;
     justify-content: center;
     align-content: center;
 
@@ -175,41 +176,37 @@ export default {
     }
 
     i {
-      font-size: 80px;
+      font-size: 30px;
       margin: 0 15px;
-    }
-  }
-
-  .process {
-    display: flex;
-    width: 800px;
-    justify-content: center;
-
-    span {
-      padding: 0 7px;
-    }
-
-    .slider {
-      width: 600px;
-      margin: 0 auto;
     }
   }
 }
 
-
-.sound {
-  width: 300px;
-  // background: greenyellow;
+.process {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 400px;
+  height: 25px;
+  margin: 0 auto;
+  transform: scale(0.8);
+  box-sizing: border-box;
 
   span {
-    font-size: 20px;
-    margin-right: 10px;
+    padding: 0 7px;
   }
 
   .slider {
+    width: 400px;
+  }
+}
+
+.sound {
+  transform: scale(0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  .slider {
     width: 100px;
   }
-}</style>
+}
+</style>

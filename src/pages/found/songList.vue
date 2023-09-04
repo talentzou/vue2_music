@@ -88,7 +88,7 @@ export default {
 
 .displaySong {
   display: flex;
-  height: 400px;
+  height: 150px;
   align-items: center;
   position: relative;
   margin: 10px 20px;
@@ -106,8 +106,8 @@ export default {
   }
 
   img {
-    width: 300px;
-    height: 300px;
+    width: 150px;
+    height: 150px;
     margin-left: 15px;
     z-index: 1;
   }
@@ -119,7 +119,7 @@ export default {
       border: 1px solid rgb(17, 15, 15);
       border-radius: 10px;
       padding: 5px;
-      font-size: 45px;
+      font-size: 25px;
       margin-bottom: 20px;
     }
 

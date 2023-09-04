@@ -52,14 +52,13 @@ export default {
   /*元素垂直居中 */
   position: relative;
   background: rgb(167, 219, 235);
-  padding: 0 10px;
 
 }
 
 .music-title {
   font-size: 45px;
   display: flex;
-  width: 300px;
+  width: 250px;
   align-items: center;
   font-family: 'Courier New', Courier, monospace;
 }
@@ -72,17 +71,14 @@ export default {
 }
 
 .router-icon {
-  margin: 0 100px;
 
   .shape {
     padding: 3px;
-    /*圆点大小*/
     border-radius: 50%;
-    /*圆点*/
     border: 1px;
     background-color: rgba(242, 240, 237, 0.937);
-    margin: 0 25px;
-    font-size: 50px;
+    margin: 0 10px;
+    font-size: 25px;
   }
 }
 

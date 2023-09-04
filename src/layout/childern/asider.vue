@@ -31,16 +31,11 @@ export default {
   width: 100%;
 }
 
-.el_menu {
-  padding: 15px 0;
-  width: 400px;
-
-}
   .el-menu-item {
-    width: 400px;
+    width: 300px;
     height: 100%;
     padding: 0 !important;
-    font-size: 50px;
-    margin: 25px 0;
+    font-size: 20px;
+    margin: 10px 0;
   }
 </style>

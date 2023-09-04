@@ -79,8 +79,9 @@ export default {
 }
 .title{
         display: block;
-        font-size: 80px;
+        font-size: 35px;
         font-weight: 700;
+        padding: 10px;
     }
 .recommend{
     display: flex;
@@ -89,8 +90,8 @@ export default {
         margin: 10px 25px 10px 0;
     }
     img{
-        width: 800px;
-        height: 500px;
+        width: 300px;
+        height: 170px;
         border-radius:15px ;
         object-fit: contain;
     }

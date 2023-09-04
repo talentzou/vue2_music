@@ -46,6 +46,6 @@ span {
   margin-right: 20px;
 }
 .tag-name{
- font-size: 50px;
+ font-size: 20px;
 }
 </style>

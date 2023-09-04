@@ -37,20 +37,20 @@ export default {
 <style lang="scss" scoped>
 .viewport {
   padding: 10px;
-  width: 800px !important;
-  background-color: rgb(230, 236, 230);
-  padding: 20px;
+  width: 200px !important;
+  display: flex;
 }
 .songInfo {
-  line-height: 50px;
+  line-height: 30px;
   margin-left: 40px;
   display: flex;
   flex-direction: column;
-  font-size: 20px;
+  font-size: 10px;
+  flex: 1;
 }
 .img {
-  width: 150px;
-  height: 150px;
+  width: 70px;
+  height: 70px;
 }
 .space {
   margin-top: 15px;
